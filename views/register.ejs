@@ -1,0 +1,60 @@
+<%- include('./partials/navbar');%>
+
+<div class="container-sm mt-4 shadow p-3 rounded">
+  <div class="text-center fs-2">Register</div>
+  <form action="/users/register" method="post">
+    <%- include('./partials/messages')%>
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Full Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        aria-describedby="emailHelp"
+        name="fullName"
+        value="<%= typeof fullName!='undefined'? fullName:'' %>"
+      />
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        name="email"
+        value="<%= typeof email!='undefined'? email:'' %>"
+      />
+      <div id="emailHelp" class="form-text">
+        We'll never share your email with anyone else.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="password"
+        value="<%= typeof password!='undefined'? password:'' %>"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword2" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword2"
+        name="repassword"
+        value="<%= typeof repassword!='undefined'? repassword:'' %>"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <div class="mt-2">
+    Already have an account?
+    <a href="/users/login" class="link-underline link-underline-opacity-0"
+      >Log In!</a
+    >
+  </div>
+</div>

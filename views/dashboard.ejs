@@ -1,0 +1,38 @@
+<%- include('./partials/navbar') %>
+<div class="container-fluid text-center mt-3">
+    <a href="" type="button" class="btn btn-primary">All Tasks</a>
+    <a href="/task/new" type="button" class="btn btn-success">Create New Task</a>
+
+<div style="max-width: 500px;" class="mx-auto my-3 fs-6"><%- include('./partials/messages') %></div>
+
+    <!-- show card -->
+    <% if(tasks.length>0){  %>
+        <div class="card mt-5 " style="width: 100%;border: none;">
+            <div class="row row-cols-1 row-cols-md-3 g-4 text-start justify-content-center" >
+                <% tasks.forEach((obj)=>{ %>
+                <div class="col " style="max-width: 300px;">
+                   <div class="card shadow"> 
+                        <div class="card-body "> 
+                            <h5 class="card-title"><%=obj.title %></h5>
+                            <p class="card-text"><%=obj.description %></p>
+                            <p>Due Date: <span><%=obj.duedate.toDateString() %></span></p>
+                            
+                            <div class="d-flex">
+                                <form action="/task/<%= obj._id %>/edit" method="get">
+                                    <button type="submit" class="btn btn-success mx-2">Edit</button>
+                                </form>
+                                <form action="/task/<%= obj._id %>/delete" method="post">
+                                    <button type="submit" class="btn btn-danger">Delete Task</button>
+                                </form>
+                            </div>
+                            
+                        </div>
+                    </div> 
+                </div>
+                    <%  })}else{ %>
+                        <p class="fs-2 mt-3">You didn't created any task yet!</p>
+                    <% }%>
+          </div>
+      </div>
+</div>
+

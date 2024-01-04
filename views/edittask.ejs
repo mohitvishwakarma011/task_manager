@@ -1,0 +1,32 @@
+<%- include('./partials/navbar') %>
+
+
+  <div class="card mb-3 p-3 mx-auto mt-5 shadow" style="max-width: 540px;">
+    <form action="/task/<%=task._id%>/edit" method="post">
+      <div class="mb-3">
+        <h3  class="form-label text-center">New Task</h3>
+          <%- include('./partials/messages') %>
+
+        <input type="text" class="form-control" id="newTask" placeholder="title" name="title" value="<%= task.title %>">
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Description</label>
+        <textarea class="form-control" id="desc" rows="3" name="description" ><%= task.description %></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="dueDate" class="form-label" >Due Date:-</label>
+        <input id="dueDate" type="date" class="ms-4" style="border:none;border-bottom:2px solid;" name="duedate" value="<%= task.duedate.toISOString().split('T')[0] %>" >
+      </div>
+  
+      <div class="d-flex justify-content-around">
+        <button type="submit" class="btn btn-success" style="max-width: 80px;">Update</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // const currDate = new Date().toISOString().split('T')[0];
+    // const dateInput = document.getElementById('dueDate');
+    // dateInput.value = currDate;
+    // dateInput.min = currDate;
+  </script>
